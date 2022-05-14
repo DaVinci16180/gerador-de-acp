@@ -1,0 +1,18 @@
+Estados do automato (nome,inicial,final):
+q0,1,0
+q1,0,1
+
+Alfabeto do automato (caracteres separados por virgula):
+a,b
+
+Simbolo de inicio da pilha:
+z
+
+Alfabeto da pilha (caracteres separados por virgula):
+a
+
+Funcoes de transicao (estado origem(entrada,condicao:cadeia)->estado destino):
+q0(a,z:az)->q0
+q0(a,a:aa)->q0
+q0(b,a:e)->q1
+q1(b,a:e)->q1
