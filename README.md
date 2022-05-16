@@ -36,3 +36,5 @@ $ {RELATIVE_PATH}/exemplo.txt
 O programa aceita autômatos com aceitação por pilha vazia, apenas. São aceitas transições vazias,
 representadas pela letra "**e**". Devido a isso, não é permitido o uso dessa letra no alfabeto do 
 automato. Usá-la não retornará uma excessão de imediato, mas afetará a execução do algoritmo.
+A letra "**e**" também é utilizada para indicar que nada é introduzido na pilha em determinada
+transição (observar exemplo no arquivo `exemplo.txt`).
