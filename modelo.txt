@@ -3,13 +3,13 @@ Estados do automato (nome,inicial,final):
 q0,1,1 (exemplo)
 
 Alfabeto do automato (caracteres separados por virgula):
-a,b,c,d,e (letras separadas por virgula, sem espaços)
+a,b,c,d (letras separadas por virgula, sem espaços. IMPORTANTE: por representar transições vazias, a letra "e" não pode ser usada no alfabeto)
 
 Simbolo de inicio da pilha:
 z (caractere unico)
 
 Alfabeto da pilha (caracteres separados por virgula):
-a,b,c,d,e (letras separadas por virgula, sem espaços)
+a,b,c,d (letras separadas por virgula, sem espaços)
 
 Funcoes de transicao (estado origem(entrada,condicao:cadeia)->estado destino):
 {estado de origem}({entrada},{condicao}:{cadeia})->{estado destino}
