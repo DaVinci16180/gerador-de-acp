@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite o caminho para o arquivo do automato. Caso esteja na raiz do projeto, basta digitar o nome do arquivo.");
+        System.out.println("Digite o caminho para o arquivo do automato. Caso esteja no mesmo diretorio do arquivo .jar, basta digitar o nome do arquivo.");
         String filePath = null;
         Automato automato = null;
 
