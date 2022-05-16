@@ -37,4 +37,7 @@ O programa aceita autômatos com aceitação por pilha vazia, apenas. São aceit
 representadas pela letra "**e**". Devido a isso, não é permitido o uso dessa letra no alfabeto do 
 automato. Usá-la não retornará uma excessão de imediato, mas afetará a execução do algoritmo.
 A letra "**e**" também é utilizada para indicar que nada é introduzido na pilha em determinada
-transição (observar exemplo no arquivo `exemplo.txt`).
+transição (observar exemplo no arquivo `exemplo.txt`). O programa não aceita a palavra vazia.
+Submeter a palavra vazia retornará que a palavra não pertence à linguagem, mesmo que a linguagem
+a aceite. Isso não significa que o programa considera a palavra como não pertencente, apenas que
+ele não a considera de modo algum.
