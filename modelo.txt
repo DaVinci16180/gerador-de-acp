@@ -1,18 +1,16 @@
 Estados do automato (nome,inicial,final):
-q0,1,0
-q1,0,1
+{nome do estado},{é inicial: 1 para true, 0 para false},{é final: 1 para true, 0 para false}
+q0,1,1 (exemplo)
 
 Alfabeto do automato (caracteres separados por virgula):
-a,b
+a,b,c,d,e (letras separadas por virgula, sem espaços)
 
 Simbolo de inicio da pilha:
-z
+z (caractere unico)
 
 Alfabeto da pilha (caracteres separados por virgula):
-a
+a,b,c,d,e (letras separadas por virgula, sem espaços)
 
 Funcoes de transicao (estado origem(entrada,condicao:cadeia)->estado destino):
-q0(a,z:az)->q0
-q0(a,a:aa)->q0
-q0(b,a:e)->q1
-q1(b,a:e)->q1
+{estado de origem}({entrada},{condicao}:{cadeia})->{estado destino}
+q0(a,z:az)->q1 (exemplo)
