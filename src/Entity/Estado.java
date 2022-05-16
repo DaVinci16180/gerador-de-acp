@@ -17,6 +17,13 @@ public class Estado {
         this.aceitacao = aceitacao;
     }
 
+    public Estado(Estado estado) {
+        this.nome = estado.nome;
+        this.aceitacao = estado.aceitacao;
+        this.inicial = estado.inicial;
+        this.funcoesDeTransicao = estado.funcoesDeTransicao;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -36,4 +43,5 @@ public class Estado {
     public boolean isAceitacao() {
         return aceitacao;
     }
+
 }

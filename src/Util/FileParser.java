@@ -120,9 +120,7 @@ public class FileParser {
         throw new WrongFileFormatException("O arquivo não está no formato adequado.");
     }
 
-    private List<FuncaoDeTransicao> getFuncoesDeTransicao(List<Estado> estados) {
-        List<FuncaoDeTransicao> funcoesDeTransicao = new ArrayList<>();
-
+    private void linkFuncoesDeTransicaoToEstados(List<Estado> estados) {
         if (stack.peek().startsWith("Funcoes de transicao")) {
             stack.pop();
 
@@ -175,19 +173,15 @@ public class FileParser {
                     }
                 }
 
-                funcoesDeTransicao.add(funcaoDeTransicao);
-
                 if (stack.isEmpty()) {
                     break;
                 }
 
                 row = stack.pop();
             }
-
-            return funcoesDeTransicao;
+        } else {
+            throw new WrongFileFormatException("O arquivo não está no formato adequado.");
         }
-
-        throw new WrongFileFormatException("O arquivo não está no formato adequado.");
     }
 
     private Stack<Character> stackStringReverse(String string) {
@@ -211,13 +205,12 @@ public class FileParser {
         List<Character> alfabeto = getAlfabeto();
         Character simboloDeInicio = getSimboloDeInicio();
         List<Character> alfabetoDaPilha = getAlfabetoDaPilha();
-        List<FuncaoDeTransicao> funcoesDeTransicao = getFuncoesDeTransicao(estados);
 
         automato.setEstados(estados);
         automato.setAlfabeto(alfabeto);
         automato.setSimboloDeInicio(simboloDeInicio);
         automato.setAlfabetoDaPilha(alfabetoDaPilha);
-        automato.setFuncoesDeTransicao(funcoesDeTransicao);
+        linkFuncoesDeTransicaoToEstados(estados);
 
         return automato;
     }

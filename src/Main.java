@@ -14,8 +14,8 @@ public class Main {
 
         String string = "ab";
 
-        Stack<Character> stack = new Stack<>();
-        boolean aceita = automato.assess(string, stack);
+
+        boolean aceita = automato.assess(string);
 
         System.out.println("aceita: " + aceita);
     }
