@@ -1,6 +1,7 @@
 Estados do automato (nome,inicial,final):
 q0,1,0
-q1,0,1
+q1,0,0
+q2,0,1
 
 Alfabeto do automato (caracteres separados por virgula):
 1,0
@@ -23,3 +24,4 @@ q0(e,0:0)->q1
 q0(e,1:1)->q1
 q1(0,0:e)->q1
 q1(1,1:e)->q1
+q1(e,z:z)->q2

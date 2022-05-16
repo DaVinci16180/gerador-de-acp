@@ -74,29 +74,25 @@ public class Automato {
     }
 
     private boolean doAssessments(Queue<Character> palavra, Stack<Character> stack, Estado estadoAtual) {
-        if (!palavra.isEmpty()) {
+        Character letra = palavra.peek();
+        for (FuncaoDeTransicao funcao : estadoAtual.getFuncoesDeTransicao()) {
+            if ((funcao.getEntrada().equals(letra) || funcao.getEntrada().equals('e')) && stack.peek().equals(funcao.getCondicao())) {
+                Stack<Character> tempStack = cloneStack(stack);
+                Queue<Character> tempPalavra = cloneQueue(palavra);
+                if (!funcao.getEntrada().equals('e')) {
+                    tempPalavra.poll();
+                }
 
-            Character letra = palavra.peek();
-            for (FuncaoDeTransicao funcao : estadoAtual.getFuncoesDeTransicao()) {
-//                System.out.println(funcao.getOrigem().getNome() + "(" + funcao.getEntrada() + "," + funcao.getCondicao() + ":" + funcao.getSaida() + ")->" + funcao.getDestino().getNome());
-                if ((funcao.getEntrada().equals(letra) || funcao.getEntrada().equals('e')) && stack.peek().equals(funcao.getCondicao())) {
-                    Stack<Character> tempStack = cloneStack(stack);
-                    Queue<Character> tempPalavra = cloneQueue(palavra);
-                    if (!funcao.getEntrada().equals('e')) {
-                        tempPalavra.poll();
-                    }
+                estadoAtual = transicao(tempStack, funcao);
 
-                    estadoAtual = transicao(tempStack, funcao);
+                if (tempPalavra.isEmpty() && (tempStack.peek().equals(simboloDeInicio) || estadoAtual.isAceitacao())) {
+                    return true;
+                }
 
-                    if (tempPalavra.isEmpty() && tempStack.peek().equals(simboloDeInicio)) {
-                        return true;
-                    }
+                boolean res = doAssessments(tempPalavra, tempStack, new Estado(estadoAtual));
 
-                    boolean res = doAssessments(tempPalavra, tempStack, new Estado(estadoAtual));
-
-                    if (res) {
-                        return true;
-                    }
+                if (res) {
+                    return true;
                 }
             }
         }

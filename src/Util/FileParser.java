@@ -206,6 +206,10 @@ public class FileParser {
         Character simboloDeInicio = getSimboloDeInicio();
         List<Character> alfabetoDaPilha = getAlfabetoDaPilha();
 
+        if (alfabeto.contains('e') || alfabetoDaPilha.contains('e')) {
+            throw new WrongFileFormatException("A letra 'e' nao pode ser utilizada nos alfabetos do automato e da pilha.");
+        }
+
         automato.setEstados(estados);
         automato.setAlfabeto(alfabeto);
         automato.setSimboloDeInicio(simboloDeInicio);
