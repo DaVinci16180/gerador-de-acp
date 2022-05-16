@@ -75,21 +75,24 @@ public class Automato {
 
     private boolean doAssessments(Queue<Character> palavra, Stack<Character> stack, Estado estadoAtual) {
         if (!palavra.isEmpty()) {
-            // pega a letra de cima e faz as transições
-            // se não transicionar, retorna false
 
-            Character letra = palavra.poll();
+            Character letra = palavra.peek();
             for (FuncaoDeTransicao funcao : estadoAtual.getFuncoesDeTransicao()) {
-                // faz a transição e recursivo
-                if (letra.equals(funcao.getEntrada()) && stack.peek().equals(funcao.getCondicao())) {
+//                System.out.println(funcao.getOrigem().getNome() + "(" + funcao.getEntrada() + "," + funcao.getCondicao() + ":" + funcao.getSaida() + ")->" + funcao.getDestino().getNome());
+                if ((funcao.getEntrada().equals(letra) || funcao.getEntrada().equals('e')) && stack.peek().equals(funcao.getCondicao())) {
                     Stack<Character> tempStack = cloneStack(stack);
+                    Queue<Character> tempPalavra = cloneQueue(palavra);
+                    if (!funcao.getEntrada().equals('e')) {
+                        tempPalavra.poll();
+                    }
+
                     estadoAtual = transicao(tempStack, funcao);
 
-                    if (palavra.isEmpty() && tempStack.peek().equals(simboloDeInicio)) {
+                    if (tempPalavra.isEmpty() && tempStack.peek().equals(simboloDeInicio)) {
                         return true;
                     }
 
-                    boolean res = doAssessments(cloneQueue(palavra), tempStack, new Estado(estadoAtual));
+                    boolean res = doAssessments(tempPalavra, tempStack, new Estado(estadoAtual));
 
                     if (res) {
                         return true;
