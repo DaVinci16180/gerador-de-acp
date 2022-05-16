@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Estado {
-    private String nome;
+    private final String nome;
     private List<FuncaoDeTransicao> funcoesDeTransicao = new ArrayList<>();
     private boolean inicial = false;
     private boolean aceitacao = false;
@@ -30,10 +30,6 @@ public class Estado {
 
     public List<FuncaoDeTransicao> getFuncoesDeTransicao() {
         return funcoesDeTransicao;
-    }
-
-    public void setFuncoesDeTransicao(List<FuncaoDeTransicao> funcoesDeTransicao) {
-        this.funcoesDeTransicao = funcoesDeTransicao;
     }
 
     public boolean isInicial() {

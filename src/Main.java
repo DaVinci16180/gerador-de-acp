@@ -1,24 +1,18 @@
 import Entity.Automato;
-import Entity.Estado;
-import Entity.FuncaoDeTransicao;
 import Util.FileParser;
 
-import java.io.IOException;
-import java.util.List;
 import java.util.Scanner;
-import java.util.Stack;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite o caminho para o arquivo do automato. Caso esteja no mesmo diretorio do arquivo .jar, basta digitar o nome do arquivo.");
-        String filePath = null;
-        Automato automato = null;
+        System.out.println("\nDigite o caminho para o arquivo do automato. Caso esteja no mesmo diretorio do arquivo .jar, basta digitar o nome do arquivo.");
 
+        Automato automato = null;
         while (automato == null) {
             try {
-                filePath = scanner.nextLine();
+                String filePath = scanner.nextLine();
                 FileParser parser = new FileParser(filePath);
                 automato = parser.getAutomato();
             } catch (Exception e) {
@@ -26,18 +20,18 @@ public class Main {
             }
         }
 
-        System.out.println("\nAutomato criado com sucesso.\n");
+        System.out.println("\nAutomato criado com sucesso.");
 
         boolean running = true;
         while (running) {
-            System.out.println("Digite uma palavra a ser testada pelo automato:");
+            System.out.println("\nDigite uma palavra a ser testada pelo automato:");
             String palavra = scanner.nextLine();
             boolean aceita = automato.assess(palavra);
 
             if (aceita) {
-                System.out.println("A palavra e aceita pelo automato :D");
+                System.out.println("\nA palavra e aceita pelo automato :D");
             } else {
-                System.out.println("A palavra NAO e aceita pelo automato :(");
+                System.out.println("\nA palavra NAO e aceita pelo automato :(");
             }
 
             System.out.println("\nGostaria de submeter mais palavras? [s/n]");

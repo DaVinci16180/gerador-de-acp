@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.Stack;
 
 public class FileParser {
-    private BufferedReader br;
-    private Stack<String> stack = new Stack<>();
+    private final BufferedReader br;
+    private final Stack<String> stack = new Stack<>();
 
     public FileParser(String filePath) throws FileNotFoundException {
         br = new BufferedReader(new FileReader(filePath));

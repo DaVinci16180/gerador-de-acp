@@ -38,9 +38,7 @@ public class Automato {
     }
 
     private Estado getEstadoInicial() {
-        Optional<Estado> opt = estados.stream().filter(s -> {
-           return s.isInicial();
-        }).findFirst();
+        Optional<Estado> opt = estados.stream().filter(Estado::isInicial).findFirst();
 
         if (opt.isEmpty()) {
             throw new RuntimeException("Não existe estado inicial");
@@ -49,25 +47,15 @@ public class Automato {
         return opt.get();
     }
 
-    private List<Estado> getEstadosFinais() {
-        return estados.stream().filter(s -> {
-            return s.isAceitacao();
-        }).toList();
-    }
-
     public boolean assess(@NotNull String string) {
         Stack<Character> stack = new Stack<>();
         stack.push(simboloDeInicio);
 
         Queue<Character> palavra = getPalavra(string);
 
-        Estado inicial = getEstadoInicial();
-        List<Estado> finais = getEstadosFinais();
-
-        Estado estadoAtual = inicial;
+        Estado estadoAtual = getEstadoInicial();
         try {
-            boolean aceita = doAssessments(palavra, stack, estadoAtual);
-            return aceita;
+            return doAssessments(palavra, stack, estadoAtual);
         } catch (Exception e) {
             return false;
         }
@@ -119,9 +107,7 @@ public class Automato {
     }
 
     private Queue<Character> cloneQueue(Queue<Character> queue) {
-        Queue<Character> newQueue = new LinkedList<>(queue);
-
-        return newQueue;
+        return new LinkedList<>(queue);
     }
 
     private Stack<Character> cloneStack(Stack<Character> stack) {
